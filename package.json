@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss css/tailwind.css -o public/css/tailwind.css"
+    "build:css": "postcss public/build/tailwind.css -o public/css/tailwind.css"
   },
   "eslintConfig": {
     "extends": "react-app"
