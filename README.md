@@ -1,4 +1,30 @@
-IP Tracker Web APP
+## IP Tracker  
 
-•App will initially load taking in the users IP address, and show the location of the source.  
-•You can input an ip adress on your own, or use the Generate IP button to randomly generate an ip!
+ ---  
+
+
+
+#### IP Tracker is an IP location finder tool, built using React, TailwindCSS, and Leaflet.  
+
+
+![IP Tracker Screenshot](https://i.imgur.com/3dJsuh7.png)
+
+### Features
+- Searches for the source location of the specified IP address
+- Displays the location source of the specified IP address
+- Fully functional map in which you can toggle the marker to see additional information
+- Fully responsive UI
+
+### Future Development:
+- Highlight locations of interest
+- Show more information about specified IP
+- Link to ISP website
+
+
+### Installation
+1) Download and install node.js from https://nodejs.org/en/download/
+2) Clone or download the git repository
+3) Unzip and CD in project directory
+4) Run `npm install`
+5) Run `npm start` to initialize local server
+
