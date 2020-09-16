@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import InfoCard from "./InfoCard";
-import Map from "./Map";
+import ReactMap from "./ReactMap";
 
 const SearchBar = () => {
   const [term, setTerm] = useState("");
@@ -12,23 +12,30 @@ const SearchBar = () => {
   const [timeZone, setTimeZone] = useState("");
   const [isp, setIsp] = useState("");
 
-  // const search = async () => {
-  //   const { data } = await axios.get(
-  //     `https://geo.ipify.org/api/v1?apiKey=at_sQEluxF2daTNMRGHr0VyZi3ucwyMh&ipAddress=${term}`
-  //   );
-  //   const locationParse = `${data.location.city}, ${data.location.region} ${data.location.postalCode}`;
-  //   setIp(data.ip);
-  //   setLocation(locationParse);
-  //   setTimeZone(data.location.timezone);
-  //   setIsp(data.isp);
-  // };
-  // useEffect(() => {
-  //   search();
-  // }, []);
+  const [lng, setLng] = useState(null);
+  const [lat, setLat] = useState(null);
+
+  const search = async () => {
+    const { data } = await axios.get(
+      `https://geo.ipify.org/api/v1?apiKey=at_sQEluxF2daTNMRGHr0VyZi3ucwyMh&ipAddress=${term}`
+    );
+    const locationParse = `${data.location.city}, ${data.location.region} ${data.location.postalCode}`;
+    setIp(data.ip);
+    setLocation(locationParse);
+    setTimeZone(data.location.timezone);
+    setIsp(data.isp);
+
+    // Coordinate States
+    setLat(data.location.lat);
+    setLng(data.location.lng);
+  };
+  useEffect(() => {
+    search();
+  }, []);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    //search();
+    search();
   };
 
   return (
@@ -70,7 +77,7 @@ const SearchBar = () => {
         </form>
       </div>
       <InfoCard ip={ip} location={location} timeZone={timeZone} isp={isp} />
-      <Map />
+      <ReactMap lng={lng} lat={lat} />
     </div>
   );
 };
