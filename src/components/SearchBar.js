@@ -3,6 +3,8 @@ import axios from "axios";
 import InfoCard from "./InfoCard";
 import ReactMap from "./ReactMap";
 
+import ipfy from "../utils/ipfy";
+
 const SearchBar = () => {
   const [term, setTerm] = useState("");
 
@@ -21,7 +23,7 @@ const SearchBar = () => {
 
   const search = async () => {
     const { data } = await axios.get(
-      `https://geo.ipify.org/api/v1?apiKey=at_sQEluxF2daTNMRGHr0VyZi3ucwyMh&ipAddress=${term}`
+      `https://geo.ipify.org/api/v1?apiKey=${ipfy}&ipAddress=${term}`
     );
     const locationParse = `${data.location.city}, ${data.location.region} ${data.location.postalCode}`;
     setIp(data.ip);
