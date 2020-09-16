@@ -45,6 +45,17 @@ const SearchBar = () => {
     search();
   };
 
+  const generateIp = () => {
+    // 0-255
+    const block1 = Math.floor(Math.random() * 256);
+    const block2 = Math.floor(Math.random() * 256);
+    const block3 = Math.floor(Math.random() * 256);
+    const block4 = Math.floor(Math.random() * 256);
+    const ip = `${block1}.${block2}.${block3}.${block4}`;
+
+    setTerm(ip);
+  };
+
   return (
     <div className="">
       <div className="container mx-auto relative">
@@ -56,7 +67,7 @@ const SearchBar = () => {
           className="flex h-10 justify-center md:mb-12 mb-8 mx-auto rubik text-xl tracking-wider"
         >
           <input
-            className="md:w-4/12 w-8/12 h-12 bg-white rounded-l-lg px-4"
+            className="md:w-4/12 md:text-xl text-base w-5/12 h-12 bg-white rounded-l-lg px-4"
             placeholder="Search for any IP address or domain"
             value={term}
             onChange={(event) => {
@@ -64,7 +75,13 @@ const SearchBar = () => {
             }}
           ></input>
           <button
-            className="md:w-12 w-2/12 h-12 bg-black text-white rounded-r-lg focus:bg-gray-700"
+            className="md:w-2/12 w-3/12 h-12 bg-teal-500 p-1 leading-none md:text-lg text-base focus:outline-none active:bg-teal-400 activeshadow-inner border-2 border-teal-500"
+            onClick={() => generateIp()}
+          >
+            Generate IP
+          </button>
+          <button
+            className="md:w-12 w-2/12 h-12 bg-black text-white rounded-r-lg focus:outline-none active:bg-gray-700 activeshadow-inner border-2 border-teal-500"
             type="submit"
           >
             <svg

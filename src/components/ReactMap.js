@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import { Icon, control } from "leaflet";
+import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
+
+import Footer from "./Footer";
 
 const blackMarker = new Icon({
   iconUrl: "/images/icon-location.svg",
@@ -14,11 +16,11 @@ const ReactMap = ({ lat, lng, data }) => {
   if (!lat || !lng) return null;
   else {
     return (
-      <div className="absolute w-full md:h-full -z-10 md:my-6 -mt-24">
+      <div className="absolute w-full -z-10 md:my-6 -mt-24 mb-10">
         <Map
           className="w-full md:h-full h-perc"
           center={[lat, lng]}
-          zoom={12}
+          zoom={13}
           zoomControl={false}
         >
           <TileLayer
@@ -39,6 +41,7 @@ const ReactMap = ({ lat, lng, data }) => {
             </Popup>
           )}
         </Map>
+        <Footer />
       </div>
     );
   }
