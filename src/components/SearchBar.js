@@ -12,8 +12,12 @@ const SearchBar = () => {
   const [timeZone, setTimeZone] = useState("");
   const [isp, setIsp] = useState("");
 
+  // Map data
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
+
+  // Marker popup
+  const [data, setData] = useState(null);
 
   const search = async () => {
     const { data } = await axios.get(
@@ -28,6 +32,9 @@ const SearchBar = () => {
     // Coordinate States
     setLat(data.location.lat);
     setLng(data.location.lng);
+
+    // Marker data
+    setData(data);
   };
   useEffect(() => {
     search();
@@ -39,9 +46,9 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
-      <div className="container mx-auto">
-        <h1 className="text-white text-2xl md:text-3xl text-center pt-5 pb-5 rubik">
+    <div className="">
+      <div className="container mx-auto relative">
+        <h1 className="text-white text-2xl md:text-3xl text-center md:pt-5 pt-8 rubik">
           IP Address Tracker
         </h1>
         <form
@@ -77,7 +84,7 @@ const SearchBar = () => {
         </form>
       </div>
       <InfoCard ip={ip} location={location} timeZone={timeZone} isp={isp} />
-      <ReactMap lng={lng} lat={lat} />
+      <ReactMap lng={lng} lat={lat} data={data} />
     </div>
   );
 };
