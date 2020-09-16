@@ -14,6 +14,7 @@
 - Displays the location source of the specified IP address
 - Fully functional map in which you can toggle the marker to see additional information
 - Fully responsive UI
+- Generate random IP address
 
 ### Future Development:
 - Highlight locations of interest
